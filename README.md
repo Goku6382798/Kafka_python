@@ -52,3 +52,18 @@ kafka_heavy_workflow/
 └── test/                          # Test scripts
 project_tree.txt                   # Full project tree (auto-generated)
 tree_top2.txt                      # High-level tree (top 2 levels)
+
+## ☁️ Store Data in AWS S3
+
+Apart from storing logs locally, we can also **send data directly to AWS S3** using the AWS SDK (`boto3`).  
+
+### Short Example
+```python
+import boto3
+
+s3 = boto3.client("s3")
+
+# Upload local log file to S3
+s3.upload_file("orders_logs/orders_batch_1.json",
+               "my-retail-bucket",
+               "orders/orders_batch_1.json")
